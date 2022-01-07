@@ -1,0 +1,26 @@
+name: Deploy TOSCA with Ansible
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu:20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: ./01install.sh
+      - name: Deploy
+        run: bash 02deploy.sh
+      - name: Test
+        run:
+          ls -la /tmp
+          cat /tmp/playing-opera/hello/hello.txt
+      - name: Undeploy
+        run: |
+          bash 03undeploy.sh
+          ls -la /tmp
