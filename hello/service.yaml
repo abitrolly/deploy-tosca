@@ -22,7 +22,7 @@ topology_template:
   inputs:
     hello_input:
       type: string
-      default: "hello web"
+      default: "hello web\n"
 
   node_templates:
     deploy-workstation:
