@@ -17,7 +17,7 @@ jobs:
       - name: Deploy
         run: bash 02deploy.sh
       - name: Test
-        run:
+        run: |
           ls -la /tmp
           cat /tmp/playing-opera/hello/hello.txt
       - name: Undeploy
