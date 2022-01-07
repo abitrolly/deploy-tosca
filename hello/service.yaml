@@ -1,7 +1,7 @@
 tosca_definitions_version: tosca_simple_yaml_1_3
 
 metadata:
-  template_name: "hello-world"
+  template_name: "hello-web"
   template_author: "XLAB"
   template_version: "1.0"
 
@@ -11,8 +11,8 @@ node_types:
     interfaces:
       Standard:
         inputs:
-          marker:
-            value: { get_input: marker }
+          file_contents:
+            value: { get_input: hello_input }
             type: string
         operations:
           create: playbooks/create.yaml
@@ -20,12 +20,12 @@ node_types:
 
 topology_template:
   inputs:
-    marker:
+    hello_input:
       type: string
-      default: default-marker
+      default: "hello web"
 
   node_templates:
-    my-workstation:
+    deploy-workstation:
       type: tosca.nodes.Compute
       attributes:
         private_address: localhost
@@ -34,4 +34,4 @@ topology_template:
     hello:
       type: hello_type
       requirements:
-        - host: my-workstation
+        - host: deploy-workstation
