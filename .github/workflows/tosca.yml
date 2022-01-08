@@ -23,4 +23,4 @@ jobs:
       - name: Undeploy
         run: |
           bash 03undeploy.sh
-          curl http://localhost | head 5
+          curl http://localhost | head -n 5
