@@ -19,9 +19,8 @@ jobs:
         run: bash 02deploy.sh
       - name: Test
         run: |
-          ls -la /tmp
-          cat /tmp/playing-opera/hello/hello.txt
+          curl http://localhost
       - name: Undeploy
         run: |
           bash 03undeploy.sh
-          ls -la /tmp
+          curl http://localhost | head 5
