@@ -19,8 +19,8 @@ jobs:
         run: bash 02deploy.sh
       - name: Test
         run: |
-          curl http://localhost
+          curl -s http://localhost
       - name: Undeploy
         run: |
           bash 03undeploy.sh
-          curl http://localhost | head -n 5
+          curl -s http://localhost | head -n 5
