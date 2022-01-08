@@ -3,7 +3,7 @@
   gather_facts: false
 
   tasks:
-    - name: Remove the location
+    - name: Remove the application
       file:
-        path: /tmp/playing-opera
+        path: /var/www/html/index.html
         state: absent

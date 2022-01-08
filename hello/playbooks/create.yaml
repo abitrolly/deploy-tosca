@@ -3,13 +3,17 @@
   gather_facts: false
 
   tasks:
-    - name: Make the location
-      file:
-        path: /tmp/playing-opera/hello
-        recurse: true
-        state: directory
+    - name: Install Apache2
+      apt:
+        name: apache2
 
-    - name: Ansible was here
+    - name: Start Apache2 if not started
+      ansible.builtin.service:
+        name: apache2
+        state: started
+
+    - name: Deploy web page contents
       copy:
-        dest: /tmp/playing-opera/hello/hello.txt
+        dest: /var/www/html/index.html
         content: "{{ file_contents }}"
+        backup: true
